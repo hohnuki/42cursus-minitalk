@@ -1,4 +1,4 @@
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 t_signal	g_signal;
 

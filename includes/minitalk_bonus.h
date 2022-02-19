@@ -1,5 +1,5 @@
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -15,7 +15,7 @@ typedef struct s_signal
 	int	ans;
 }	t_signal;
 
-/* minitalk_utils.c */
+/* minitalk_utils_bonus.c */
 size_t	ft_strlen(char *str);
 int		ft_putchar_fd(int c, char fd);
 void	ft_putstr_fd(char *str, int fd);

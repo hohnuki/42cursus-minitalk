@@ -1,4 +1,4 @@
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 static void	error_message(char *message)
 {
@@ -26,12 +26,12 @@ static void	send_message(pid_t pid, char *message)
 		shift_num = 0;
 		while (shift_num < 8)
 		{
-			usleep(120);
+			usleep(110);
 			if (((message[i] >> shift_num) & 0b00000001) == 1)
 				kill_ret = kill(pid, SIGUSR1);
 			else
 				kill_ret = kill(pid, SIGUSR2);
-			if (kill_ret == FAILURE)
+			if (kill_ret == -1)
 				error_message("kill failure\n");
 			shift_num++;
 		}

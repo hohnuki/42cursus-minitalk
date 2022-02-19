@@ -1,4 +1,4 @@
-#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 size_t	ft_strlen(char *str)
 {
