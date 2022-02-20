@@ -15,7 +15,7 @@ static void	signal_handler(int signal)
 		g_signal.ans += (0b100000000 >> g_signal.shift_num);
 	if (g_signal.shift_num == 1)
 	{
-		ft_putchar_fd(g_signal.ans, 1);
+		ft_putchar_fd(g_signal.ans, STDOUT_FILENO);
 		g_signal.ans = 0;
 		g_signal.shift_num = 8;
 		return ;

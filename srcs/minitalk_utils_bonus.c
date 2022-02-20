@@ -23,8 +23,6 @@ void	ft_putstr_fd(char *str, int fd)
 	if (str == NULL)
 		return ;
 	i = write(fd, str, ft_strlen(str));
-	if (i == -1)
-		return ;
 }
 
 void	ft_putnbr_fd(int nbr, int fd)
