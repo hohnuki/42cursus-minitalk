@@ -5,7 +5,6 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <signal.h>
-# include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
 
