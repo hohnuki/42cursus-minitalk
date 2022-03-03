@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 
 	validete_config(argc, argv);
 	pid = ft_atoi(argv[1]);
-	if (pid < 100 || 99998 < pid)
+	if (pid == -1)
 		error_message("invalid pid\n");
 	send_message(pid, argv[2]);
 	return (0);
