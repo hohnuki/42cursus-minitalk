@@ -1,30 +1,47 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+SERVER_NAME = server
+CLIENT_NAME = client
+NAME = minitalk
 
 SRCS_PATH = ./srcs/
 
-all : server client
+SRCS_SERVER = $(SRCS_PATH)server.c $(SRCS_PATH)minitalk_utils.c
+SRCS_CLIENT = $(SRCS_PATH)client.c $(SRCS_PATH)minitalk_utils.c
 
-bonus : client_bonus server_bonus
+OBJS_SERVER = $(SRCS_SERVER:.c=.o)
+OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
-server : $(SRCS_PATH)server.c $(SRCS_PATH)minitalk_utils.c
-		$(CC) -o server $(CFLAGS) $(SRCS_PATH)server.c $(SRCS_PATH)minitalk_utils.c
+SRCS_SERVER_BONUS = $(SRCS_PATH)server_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
+SRCS_CLIENT_BONUS = $(SRCS_PATH)client_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
 
-server_bonus : $(SRCS_PATH)server_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
-				$(CC) -o server_bonus $(CFLAGS) $(SRCS_PATH)server_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
+OBJS_SERVER_BONUS = $(SRCS_SERVER_BONUS:.c=.o)
+OBJS_CLIENT_BONUS = $(SRCS_CLIENT_BONUS:.c=.o)
 
-client : $(SRCS_PATH)client.c $(SRCS_PATH)minitalk_utils.c
-		$(CC) -o client $(CFLAGS) $(SRCS_PATH)client.c $(SRCS_PATH)minitalk_utils.c
+$(NAME): server client
 
-client_bonus : $(SRCS_PATH)client_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
-				$(CC) -o client_bonus $(CFLAGS) $(SRCS_PATH)client_bonus.c $(SRCS_PATH)minitalk_utils_bonus.c
+bonus: client_bonus server_bonus
 
-clean :
-		$(RM) $(SRCS_PATH)server.o $(SRCS_PATH)client.o $(SRCS_PATH)minitalk_utils.o $(SRCS_PATH)minitalk_utils_bonus.o $(SRCS_PATH)client_bonus.o $(SRCS_PATH)server_bonus.o
+server: $(OBJS_SERVER)
+		$(CC) -o server $(CFLAGS) $(SRCS_SERVER)
 
-fclean : clean
-		$(RM) server client client_bonus server_bonus
+server_bonus: $(OBJS_SERVER_BONUS)
+		$(CC) -o server $(CFLAGS) $(SRCS_SERVER_BONUS)
 
-re : fclean all bonus
+client: $(OBJS_CLIENT)
+		$(CC) -o client $(CFLAGS) $(SRCS_CLIENT)
 
-.PHONY : all clean fclean re
+client_bonus: $(OBJS_CLIENT_CLIENT)
+		$(CC) -o client $(CFLAGS) $(SRCS_CLIENT_BONUS)
+
+all: $(NAME)
+
+clean:
+		$(RM) $(OBJS_SERVER) $(OBJS_CLIENT) $(OBJS_SERVER_BONUS) $(OBJS_CLIENT_BONUS)
+
+fclean: clean
+		$(RM) server client minitalk
+
+re: fclean all bonus
+
+.PHONY: all clean fclean re
